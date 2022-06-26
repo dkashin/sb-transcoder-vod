@@ -1,0 +1,19 @@
+[Unit]
+Description=StreamBox VOD Service
+After=syslog.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/opt/medialab_vod
+ExecStart=/usr/bin/python3 /opt/medialab_vod/vod_app.py
+Restart=always
+KillSignal=SIGQUIT
+KillMode=process
+Type=idle
+StandardError=syslog
+NotifyAccess=all
+LimitNOFILE=64000
+
+[Install]
+WantedBy=multi-user.target
